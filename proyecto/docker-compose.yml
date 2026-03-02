@@ -1,6 +1,6 @@
-version: '3.8'
+
 services:
-  # Base de datos centralizada (usaremos diferentes esquemas o DBs)
+  # Base de datos centralizada
   postgres-db:
     image: postgres:15
     container_name: postgres-db
@@ -13,13 +13,31 @@ services:
     networks:
       - micro-network
 
-  # Broker de mensajería para la comunicación asíncrona
+  # Broker de mensajería
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq-service
     ports:
-      - "5672:"   # Puerto de comunicación
-      - "15672:15672" # Interfaz web de control
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - micro-network
+
+  # Servicio de autenticación
+  auth-service:
+    build: ./auth-service
+    container_name: auth-service
+    ports:
+      - "8080:8080"
+    networks:
+      - micro-network
+
+  # Servicio biblioteca
+  biblioteca-service:
+    build: ./biblioteca-service
+    container_name: biblioteca-service
+    ports:
+      - "8081:8081"
     networks:
       - micro-network
 
