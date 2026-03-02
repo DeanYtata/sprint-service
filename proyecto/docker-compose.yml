@@ -18,7 +18,7 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq-service
     ports:
-      - "5672:5672"   # Puerto de comunicación
+      - "5672:"   # Puerto de comunicación
       - "15672:15672" # Interfaz web de control
     networks:
       - micro-network
