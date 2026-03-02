@@ -1,4 +1,4 @@
-package com.tuproyecto.gateway.filter;
+package com.demo;
 
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
