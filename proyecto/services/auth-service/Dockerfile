@@ -1,6 +1,4 @@
-# auth-service/Dockerfile
-FROM openjdk:21-jdk
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
-COPY . .
-RUN ./mvnw clean package -DskipTests
-CMD ["java", "-jar", "target/auth-service.jar"]
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]

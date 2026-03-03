@@ -1,10 +1,11 @@
 package com.ejemplo.catalogservice.service;
 
-import com.ejemplo.catalogservice.entity.Product;
-import com.ejemplo.catalogservice.repository.ProductRepository;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ejemplo.catalogservice.entity.Product;
+import com.ejemplo.catalogservice.repository.ProductRepository;
 
 @Service
 public class ProductService {
