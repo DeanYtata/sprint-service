@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+
+  # AUTH DB
+  postgres-db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=auth_db
+    ports:
+      - "5432:5432"
+    networks:
+      - micro-network
+
+  # CATALOG DB
+  catalog-db:
+    image: postgres:15
+    container_name: catalog-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=catalog_db
+    ports:
+      - "5434:5432"
+    networks:
+      - micro-network
+
+  # ORDERS DB
+  orders-db:
+    image: postgres:15
+    container_name: orders-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=orders_db
+    ports:
+      - "5435:5432"
+    networks:
+      - micro-network
+
+  # RABBITMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-service
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - micro-network
+
+networks:
+  micro-network:
+    driver: bridge
